@@ -8,7 +8,7 @@ module ACKedTransmitC{
 	
 	uses interface Timer<TMilli> as Timer0;
 	uses interface Timer<TMilli> as Timer1;
-	uses interface Timer<TMilli> as Timer2;
+
 		
 	uses interface SplitControl as AMControl;
 	uses interface Packet;
@@ -109,16 +109,11 @@ implementation{
 		
 		if (!BUSY || retx < 8)
 		{
-			call Timer2.startPeriodic(TIMER_PERIODIC_MILLI_2);
 			post SendMsg();
 		}
 	}
 	
-	event void Timer2.fired()
-	{
 	
-	}	
-		
 		
 	event void AMSend.sendDone(message_t* msg, error_t err)
 	{
