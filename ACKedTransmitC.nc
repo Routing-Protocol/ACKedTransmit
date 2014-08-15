@@ -33,8 +33,6 @@ implementation{
 	uint8_t node2 = 0x04;
 	uint8_t node3 = 0x99; 
 	
-	uint8_t node0 = 0x05;
-	
 
 
 	event void Boot.booted()
@@ -86,7 +84,7 @@ implementation{
 		if (ACKpkt->counter%0x02 == 0)
 		{
 			call PacketAck.requestAck(&pkt);
-			if (call AMSend.send(node0, &pkt, sizeof(ACKedTransmitMsg)) == SUCCESS)      //node1
+			if (call AMSend.send(node1, &pkt, sizeof(ACKedTransmitMsg)) == SUCCESS)      //node1
 			{
 				BUSY = TRUE;
 			}
@@ -95,7 +93,7 @@ implementation{
 		else 
 		{
 			call PacketAck.requestAck(&pkt);
-			if (call AMSend.send(node0, &pkt, sizeof(ACKedTransmitMsg)) == SUCCESS)      //node2
+			if (call AMSend.send(node2, &pkt, sizeof(ACKedTransmitMsg)) == SUCCESS)      //node2
 			{
 				BUSY = TRUE;
 			}
